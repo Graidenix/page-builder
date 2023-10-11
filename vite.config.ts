@@ -1,33 +1,13 @@
-/* eslint-disable no-undef */
-/* eslint-disable @typescript-eslint/naming-convention */
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import path from 'path';
 
-import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
-
-const isExternal = (id: string) => !id.startsWith('.') && !path.isAbsolute(id);
-const plugins = [];
-
+// https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react(), ...plugins],
+    plugins: [react()],
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
         },
     },
-    build: {
-        lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'),
-            name: 'Build',
-            fileName: 'build',
-        },
-        rollupOptions: {
-            external: isExternal,
-            output: {
-                globals: {
-                    react: 'React',
-                },
-            },
-        },
-    },
-});
+})
