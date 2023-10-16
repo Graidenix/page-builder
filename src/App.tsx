@@ -1,16 +1,27 @@
 import React from 'react'
 import {mapStyles} from "@/helper/styles";
-import Input from "@/components/Input";
+import Preview from "@/components/Preview";
+
+import {useFormik} from "formik";
+import Configurator from "@/components/Configurator.tsx";
 
 const App: React.FC = () => {
+    const {values, setFieldValue} = useFormik({
+        initialValues: {},
+        onSubmit: async (data) => {
+            console.log(data)
+        }
+    })
+
     return (
         <div className={styles.root}>
-            <div className={styles.configArea}>
-                <Input type="number" placeholder="Test" sx={{input: ['text-[red]', 'placeholder:text-[blue]']}}/>
-            </div>
-            <div className={styles.previewArea}>
-
-            </div>
+            <Configurator
+                className={styles.configArea}
+                values={values}
+                onChange={(key, value) => setFieldValue(key, value)}
+            />
+            <div className={styles.separator}></div>
+            <Preview className={styles.previewArea}/>
         </div>
     )
 }
@@ -19,8 +30,9 @@ export default App;
 
 const styles = mapStyles({
     root: 'flex h-[100dvh]',
-    configArea: 'p-2',
-    previewArea: ''
+    configArea: 'p-2 w-80',
+    separator: 'bg-slate-300 w-[1px] h-full',
+    previewArea: 'flex-grow'
 })
 
 

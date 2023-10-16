@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
+const packageData = require('../package.json');
 const { readFile, parseContents, buildColor, importComponent, checkTargetDir } = require("./lib");
 
 
@@ -27,7 +28,7 @@ const buildComponents = (file) => {
 }
 
 yargs(hideBin(process.argv))
-    .version('0.0.1-alpha')
+    .version(packageData.version)
     .command(
         'components [file]',
         'import the components from library according to file',

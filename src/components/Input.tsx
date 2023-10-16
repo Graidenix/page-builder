@@ -2,15 +2,15 @@ import React from "react";
 import {mapStyleCn} from "@/helper/styles";
 import {SxProp} from "@/typings";
 
-export interface InputProps extends React.HTMLProps<'input'> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     sx?: SxProp<typeof styles>;
 }
 
 const Input: React.FC<InputProps> = (props) => {
     const {sx, ...rest} = props;
-    return (<div className={styles.wrapper(sx?.wrapper)}>
+    return <div className={styles.wrapper(sx?.wrapper)}>
         <input type="text" className={styles.input(sx?.input)} {...rest} />
-    </div>)
+    </div>
 };
 
 export default Input;

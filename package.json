@@ -1,24 +1,26 @@
 {
-  "name": "page-builder",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@graidenix/page-builder",
+  "version": "0.0.1-beta",
+  "description": "Builder page",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && tsc"
+    "start": "vite",
+    "build": "vite build && tsc",
+    "prestart": "node ./scripts/prestart.js",
+    "prebuild": "node ./scripts/prestart.js"
   },
   "bin": {
     "build": "./bin/build.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "graidenix",
   "license": "ISC",
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "@types/node": "^20.8.4",
     "autoprefixer": "^10.4.16",
     "classnames": "^2.3.2",
+    "formik": "^2.2.9",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,6 +29,7 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@types/node": "^20.8.4",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@types/yargs": "^17.0.28",

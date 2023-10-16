@@ -1,5 +1,9 @@
 const fs = require("fs");
 
+/**
+ * @param {string} file
+ * @return {string}
+ */
 const readFile = (file) => {
     try {
         return fs.readFileSync(file, { encoding: "utf-8", flag: 'r' });

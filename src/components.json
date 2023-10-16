@@ -1,0 +1,8 @@
+{
+  "components": {
+    "NavBar": [
+      "NavBar1",
+      "NavBar2"
+    ]
+  }
+}
