@@ -2,7 +2,7 @@ export type Components = { [type: string]: string };
 
 export type ColorDefinition = {
     main: string,
-    secondary: string,
+    accent: string,
 };
 
 export type ConfigType = {
@@ -10,3 +10,4 @@ export type ConfigType = {
     targetDir: string,
     components: Components;
 };
+

@@ -6,7 +6,7 @@ const { deepMerge } = require("./deepMerge");
 const DEFAULT_CONFIG = {
     colors: {
         main: '#3e63dd',
-        secondary: '#ddb83e'
+        accent: '#ddb83e'
     },
     targetDir: './src/shared',
     components: {

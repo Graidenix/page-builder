@@ -5,11 +5,11 @@
  * @returns 
  */
 const buildColor = (colors = {}) => {
-    const {main, secondary} = colors;
-    console.log(`Colors:\n - Main: ${main}\n - Secondary: ${secondary}`);
+    const {main, accent} = colors;
+    console.log(`Colors:\n - Main: ${main}\n - Accent: ${accent}`);
     return {
         main,
-        secondary
+        accent
     }
 }
 
