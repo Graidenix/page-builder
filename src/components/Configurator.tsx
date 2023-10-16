@@ -9,23 +9,31 @@ export type ConfiguratorProps = {
     values: any;
     onChange: (key: string, value: string) => unknown;
 }
+// https://www.npmjs.com/package/color-js
 
 const Configurator: React.FC<ConfiguratorProps> = (props) => {
-    const {className} = props;
+    const { className } = props;
     console.log(components);
 
     const handleComplementary = () => {
-        console.log('Complementary Color')
+        const color = '#3e63dd';
+        const rgbColor = '#' + [
+            parseInt(color.substr(1, 2), 16),
+            parseInt(color.substr(3, 2), 16),
+            parseInt(color.substr(5, 2), 16),
+        ].map(ch => (255 - ch).toString(16)).join('')
+
+        console.log('Complementary Color', color, rgbColor);
     }
 
     return (
         <div className={styles.root(className)}>
             <Section header="Main Color" htmlFor="mainColor">
-                <Input type="color" placeholder="Main color" id="mainColor" onChange={() => {}}/>
+                <Input type="color" placeholder="Main color" id="mainColor" onChange={() => { }} />
             </Section>
 
             <Section header="Accent Color" htmlFor="accentColor">
-                <Input type="color" placeholder="Accent color" id="accentColor" onChange={() => {}}/>
+                <Input type="color" placeholder="Accent color" id="accentColor" onChange={() => { }} />
                 <button onClick={handleComplementary}>Use complementary</button>
             </Section>
         </div>
