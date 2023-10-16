@@ -1,8 +1,12 @@
-export interface ConfigType {
-    colors: {
-        main: string,
-        secondary: string,
-    },
+export type Components = { [type: string]: string };
+
+export type ColorDefinition = {
+    main: string,
+    secondary: string,
+};
+
+export type ConfigType = {
+    colors: ColorDefinition,
     targetDir: string,
-    components: { [type: string]: string };
-}
+    components: Components;
+};

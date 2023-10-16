@@ -26,6 +26,10 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/formik"
+    ],
     "paths": {
       "@/*": [
         "./src/*"

@@ -2,7 +2,7 @@ import React from "react";
 import {mapStyleCn} from "@/helper/styles";
 import {SxProp} from "@/typings";
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
     sx?: SxProp<typeof styles>;
 }
 

@@ -1,4 +1,19 @@
+
+/**
+ * Check if passed argument is Object type
+ * 
+ * @param {*} item 
+ * @returns {boolean}
+ */
 const isObject = (item) => item && typeof item === 'object';
+
+/**
+ * Deep merge properties of the object
+ * 
+ * @param {*} target 
+ * @param {*} source 
+ * @returns {*}
+ */
 const deepMerge = (target, source) => {
     if (!isObject(target) || !isObject(source)) return source;
 

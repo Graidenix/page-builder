@@ -2,20 +2,30 @@ import clsx, {Argument} from 'classnames';
 import {twMerge} from 'tailwind-merge';
 import {isTruphy} from "@/type-helper";
 
+/**
+ * Merge multiple classNames using tailwind
+ */
 export function cn(...inputs: (Argument | undefined)[]): string {
     return twMerge(clsx(inputs.filter(isTruphy)));
 }
 
-export function mapStyleCn<T extends Record<string, string | string[]> = string>(record: T): Record<keyof T, typeof cn> {
-    return Object.keys(record).reduce((acc, prop) => {
-        acc[prop] = (...inputs) => cn(record[prop], inputs);
+/**
+ * Merge the classes and makes callback for merging with other classes afterthat
+ * Best to be used inside extendable components
+ */
+export function mapStyleCn<T extends Record<string, string | string[]>>(record: T): Record<keyof T, typeof cn> {
+    return Object.keys(record).reduce((acc, prop: keyof T) => {
+        acc[prop] = (...inputs: (Argument | undefined)[]) => cn(record[prop], inputs);
         return acc;
-    }, {});
+    }, {} as Record<keyof T, typeof cn>);
 }
 
-export function mapStyles<T extends Record<string, string | string[]> = string>(record: T): Record<keyof T, string> {
-    return Object.keys(record).reduce((acc, prop) => {
+/**
+ * Merge the classes and makes the one string line
+ */
+export function mapStyles<T extends Record<string, string | string[]>>(record: T): Record<keyof T, string> {
+    return Object.keys(record).reduce((acc, prop: keyof T) => {
         acc[prop] = cn(record[prop]);
         return acc;
-    }, {});
+    }, {} as Record<keyof T, string>);
 }

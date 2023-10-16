@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import {mapStyles} from "@/helper/styles.ts";
 
-interface PreviewProp {
-    className: string
+export type PreviewProp = {
+    className: string;
+    values: any;
 }
 
 const pages = ['landing', 'product-list', 'product-details'] as const;

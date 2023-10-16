@@ -2,14 +2,14 @@ import React from "react";
 import Input from "@/components/Input.tsx";
 import components from '@/components.json'
 
-interface ConfiguratorProps {
+export type ConfiguratorProps = {
     className: string;
     values: any;
     onChange: (key: string, value: string) => unknown;
 }
 
 const Configurator: React.FC<ConfiguratorProps> = (props) => {
-    const {className, values, onChange} = props;
+    const {className} = props;
     console.log(components);
 
     return (

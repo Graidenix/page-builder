@@ -1,12 +1,13 @@
 import React from 'react'
-import {mapStyles} from "@/helper/styles";
+import { mapStyles } from "@/helper/styles";
 import Preview from "@/components/Preview";
 
-import {useFormik} from "formik";
+import { useFormik } from "formik";
 import Configurator from "@/components/Configurator.tsx";
 
+
 const App: React.FC = () => {
-    const {values, setFieldValue} = useFormik({
+    const { values, setFieldValue } = useFormik({
         initialValues: {},
         onSubmit: async (data) => {
             console.log(data)
@@ -20,8 +21,8 @@ const App: React.FC = () => {
                 values={values}
                 onChange={(key, value) => setFieldValue(key, value)}
             />
-            <div className={styles.separator}></div>
-            <Preview className={styles.previewArea}/>
+            <div className={styles.separator} />
+            <Preview className={styles.previewArea} values={values} />
         </div>
     )
 }
