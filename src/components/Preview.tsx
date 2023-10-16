@@ -1,19 +1,31 @@
-import React, {useState} from "react";
-import {mapStyles} from "@/helper/styles.ts";
+import React, { useState } from "react";
+import { mapStyles } from "@/helper/styles.ts";
+import LandingPage from "@/pages/LandingPage";
+import ProductListPage from "@/pages/ProductListPage";
+import ProductDetailsPage from "@/pages/ProductDetailsPage";
+import ContactUsPage from "@/pages/ContactUsPage";
 
 export type PreviewProp = {
     className: string;
     values: any;
 }
 
-const pages = ['landing', 'product-list', 'product-details'] as const;
+const pages = ['LandingPage', 'ProductListPage', 'ProductDetailsPage', 'ContactUsPage'] as const;
 
 type SitePage = (typeof pages)[number];
 
-const Preview: React.FC<PreviewProp> = (props) => {
-    const {className} = props;
-    const [page, setPage] = useState<SitePage>('landing')
+const pageMap: Record<SitePage, React.FC> = {
+    LandingPage,
+    ProductListPage,
+    ProductDetailsPage,
+    ContactUsPage,
+};
 
+const Preview: React.FC<PreviewProp> = (props) => {
+    const { className } = props;
+    const [page, setPage] = useState<SitePage>('LandingPage')
+
+    const Page = pageMap[page]
 
     return (<div className={className}>
         <div className={styles.topbar}>
@@ -27,7 +39,7 @@ const Preview: React.FC<PreviewProp> = (props) => {
             </select>
         </div>
         <div className={styles.main}>
-            Preview
+            <Page />
         </div>
     </div>)
 }
