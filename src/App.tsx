@@ -19,7 +19,7 @@ const INITIAL_CONFIG: ConfigType = {
 }
 
 const App: React.FC = () => {
-    const { values, setFieldValue } = useFormik({
+    const { values, setFieldValue, handleSubmit } = useFormik({
         initialValues: INITIAL_CONFIG,
         onSubmit: async (data) => {
             console.log(data)
@@ -32,6 +32,7 @@ const App: React.FC = () => {
                 className={styles.configArea}
                 values={values}
                 onChange={(key, value) => setFieldValue(key, value)}
+                onSubmit={handleSubmit}
             />
             <div className={styles.separator} />
             <Preview className={styles.previewArea} values={values} />

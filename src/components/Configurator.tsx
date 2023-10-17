@@ -13,10 +13,11 @@ export type ConfiguratorProps = {
     className: string;
     values: ConfigType;
     onChange: <Key extends keyof ConfigType = keyof ConfigType>(key: Key, value: ConfigType[Key]) => unknown;
+    onSubmit: (ev: React.FormEvent<HTMLFormElement>) => unknown;
 }
 
 const Configurator: React.FC<ConfiguratorProps> = (props) => {
-    const {className, values, onChange} = props;
+    const {className, values, onChange, onSubmit} = props;
     // console.log(components);
 
     const handleColorChange = (colorType: keyof ConfigType['colors']) => (ev: ChangeEvent<HTMLSelectElement>): void => {
@@ -35,13 +36,24 @@ const Configurator: React.FC<ConfiguratorProps> = (props) => {
         })
     }
 
+    const handleDownload = () => {
+        const jsonContent = JSON.stringify(values, null, 2);
+        const fileContent = new Blob([jsonContent], { type: 'application/json' });
+        const url = window.URL.createObjectURL(fileContent);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `components.builds.json`; // You can change the file name if needed
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }
+
     const handleTargetDir = (ev: ChangeEvent<HTMLInputElement>): void => {
         const targetDir = ev.target.value;
         onChange('targetDir', targetDir);
     }
 
     return (
-        <div className={styles.root(className)}>
+        <form className={styles.root(className)} onSubmit={onSubmit}>
             <Section header="Target directory" htmlFor="targetDir">
                 <Input type="text" placeholder="Place where to copy components" value={values.targetDir}
                        onChange={handleTargetDir}/>
@@ -75,7 +87,12 @@ const Configurator: React.FC<ConfiguratorProps> = (props) => {
                     </select>
                 </Section>
             ))}
-        </div>
+
+            <div className="flex flex-row gap-2">
+                <button type="submit" className="bg-[#1276e2] text-white rounded py-1 px-3">Generate</button>
+                <button type="button" className="bg-[#422451] text-white rounded py-1 px-3" onClick={handleDownload}>Download</button>
+            </div>
+        </form>
     )
 }
 
