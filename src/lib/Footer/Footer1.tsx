@@ -20,7 +20,7 @@ const Footer: React.FC<FooterProps> = (props) => {
                 </div>
             ))}
         </div>
-        <div className="text-center text-xs">Copyright &copy; 2023</div>
+        <div className="text-center text-xs"> &copy; 2023, Company Name</div>
     </footer>;
 }
 
