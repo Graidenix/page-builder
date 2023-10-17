@@ -1,14 +1,15 @@
 import React from "react";
-import {BuilderComponentsProps} from "@/types.ts";
+import {BuilderComponentsFC} from "@/types.ts";
+import { previewData } from "@/mock/previewData";
 
-export type ProductDetailsPageProps = BuilderComponentsProps & {};
+export type ProductDetailsPageProps = BuilderComponentsFC & {};
 
 const ProductDetailsPage: React.FC<ProductDetailsPageProps> = (props) => {
     const {NavBar, Footer} = props;
     return <div>
-        <NavBar />
+        <NavBar {...previewData.NavBar}/>
         <h1 className="py-6">Product Page</h1>
-        <Footer/>
+        <Footer {...previewData.Footer}/>
     </div>
 }
 

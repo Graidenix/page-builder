@@ -1,13 +1,14 @@
 import colorJs from 'color-js';
 import * as rxColors from '@radix-ui/colors'
-import {ConfigType} from "../../types.ts";
+import {ConfigType} from "@/types.ts";
 import React from "react";
+import { objKeys } from '@/type-helper.ts';
 
 export type RxColorName = keyof typeof rxColors;
 
 const isColorName = (colorName: string): colorName is RxColorName => !colorName.includes('A') && !colorName.includes('Dark') && !colorName.includes('P3')
 
-export const LIST_OF_COLORS: RxColorName[] = Object.keys(rxColors).filter(isColorName);
+export const LIST_OF_COLORS: RxColorName[] = objKeys(rxColors).filter(isColorName);
 
 export const getColorSchema = (colorName: RxColorName, colorType: keyof ConfigType["colors"]): React.CSSProperties => {
     const schema: React.CSSProperties = {}

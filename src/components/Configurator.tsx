@@ -5,9 +5,10 @@ import {mapStyleCn} from "@/helper/styles";
 import {LIST_OF_COLORS} from "@/helper/colors.ts";
 import {ComponentTypeName, ConfigType} from "@/types.ts";
 import componentData from '@/componentsLib.json'
+import { objKeys } from "@/type-helper";
 
 const components = componentData.components as Record<ComponentTypeName, string[]>;
-const availableTypes = Object.keys(components) as ComponentTypeName[];
+const availableTypes = objKeys(components);
 
 export type ConfiguratorProps = {
     className: string;

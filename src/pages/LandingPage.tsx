@@ -1,16 +1,17 @@
 import React from 'react';
-import {BuilderComponentsProps} from "@/types.ts";
+import { BuilderComponentsFC } from "@/types.ts";
+import { previewData } from "@/mock/previewData";
 
-export type LandingPageProps = BuilderComponentsProps & {};
+export type LandingPageProps = BuilderComponentsFC & {};
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
-    const {NavBar, Footer} = props;
+  const { NavBar, Footer } = props;
   return (
-      <div>
-          <NavBar/>
-          <h1 className="py-6">Landing</h1>
-          <Footer/>
-      </div>
+    <div>
+      <NavBar {...previewData.NavBar} />
+      <h1 className="py-6">Landing</h1>
+      <Footer {...previewData.Footer} />
+    </div>
   )
 }
 

@@ -5,8 +5,9 @@ import ProductListPage from "@/pages/ProductListPage";
 import ProductDetailsPage from "@/pages/ProductDetailsPage";
 import ContactUsPage from "@/pages/ContactUsPage";
 import {getColorSchema} from "@/helper/colors.ts";
-import {BuilderComponentsProps, ComponentTypeName, ConfigType} from "@/types.ts";
+import {BuilderComponentsFC, ConfigType} from "@/types.ts";
 import {componentsMap} from "@/componentsLib.ts";
+import { objKeys } from "@/type-helper";
 
 export type PreviewProp = {
     className: string;
@@ -17,7 +18,7 @@ const pages = ['LandingPage', 'ProductListPage', 'ProductDetailsPage', 'ContactU
 
 type SitePage = (typeof pages)[number];
 
-const pageMap: Record<SitePage, React.FC<BuilderComponentsProps>> = {
+const pageMap: Record<SitePage, React.FC<BuilderComponentsFC>> = {
     LandingPage,
     ProductListPage,
     ProductDetailsPage,
@@ -37,13 +38,13 @@ const Preview: React.FC<PreviewProp> = (props) => {
     }, [values.colors]);
 
     const componentsProps = useMemo(() => {
-        const config = Object.keys(values.components) as ComponentTypeName[]
+        const config = objKeys(values.components)
 
         return config.reduce((acc, componentName) => {
             const variations = componentsMap[componentName];
             acc[componentName] = variations[values.components[componentName]]!;
             return acc;
-        }, {} as BuilderComponentsProps)
+        }, {} as BuilderComponentsFC)
     }, [values.components]);
 
 
