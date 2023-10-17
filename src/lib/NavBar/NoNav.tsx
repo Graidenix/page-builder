@@ -1,7 +1,8 @@
 import React from "react";
 
 export interface NavBarProps {
-    links: any[]
+    logo: React.ReactNode;
+    links: { name: string; href: string; }[]
 }
 
 const NavBar: React.FC<NavBarProps> = () => {

@@ -1,7 +1,10 @@
 import React from "react";
-import {RxColorName} from "@/helper/colors.ts";
-import { NavBarProps } from "./lib/NavBar/NoNav";
-import { FooterProps } from "./lib/Footer/NoFooter";
+import type {RxColorName} from "@/helper/colors.ts";
+
+import type { NavBarProps } from "./lib/NavBar/NoNav";
+import type { FooterProps } from "./lib/Footer/NoFooter";
+
+
 
 export type BuilderComponentsProps = {
     NavBar: NavBarProps;
