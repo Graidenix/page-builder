@@ -7,7 +7,7 @@ export interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = (props) => {
     const { links, logo } = props;
-    return (<div className="relative z-50 flex justify-between">
+    return (<div className="relative z-50 flex p-1 justify-between">
         <div className="flex items-center md:gap-x-12">
             <a aria-label="Home" className="text-main-10" href="#">{logo}</a>
             <div className="hidden md:flex md:gap-x-6">

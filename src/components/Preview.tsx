@@ -48,7 +48,7 @@ const Preview: React.FC<PreviewProp> = (props) => {
     }, [values.components]);
 
 
-    return (<div className={className}>
+    return (<div className={cn('flex flex-col h-full', className)}>
         <div className={styles.topbar}>
             <div>
                 Select Page
@@ -69,6 +69,6 @@ export default Preview;
 
 const styles = mapStyles({
     topbar: 'p-2 border-b flex justify-between items-center',
-    main: 'p-2'
+    main: 'flex-grow'
 })
 

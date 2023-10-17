@@ -6,13 +6,13 @@ export type LandingPageProps = BuilderComponentsFC & {};
 
 const LandingPage: React.FC<LandingPageProps> = (props) => {
   const { NavBar, Footer } = props;
-  return (
-    <div>
-      <NavBar {...previewData.NavBar} />
+  return (<div className="flex flex-col h-full">
+    <NavBar {...previewData.NavBar} />
+    <main className="flex-grow">
       <h1 className="py-6">Landing</h1>
-      <Footer {...previewData.Footer} />
-    </div>
-  )
+    </main>
+    <Footer {...previewData.Footer} />
+  </div>)
 }
 
 export default LandingPage

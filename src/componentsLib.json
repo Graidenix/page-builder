@@ -2,6 +2,7 @@
   "components": {
     "Footer": [
       "Footer1",
+      "Footer2",
       "NoFooter"
     ],
     "NavBar": [

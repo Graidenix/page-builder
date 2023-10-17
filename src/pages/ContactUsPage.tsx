@@ -6,9 +6,11 @@ export type ContactUsPageProps = BuilderComponentsFC & {};
 
 const ContactUsPage: React.FC<ContactUsPageProps> = (props) => {
     const { NavBar, Footer } = props;
-    return (<div>
+    return (<div className="flex flex-col h-full">
         <NavBar {...previewData.NavBar} />
-        <h1 className="py-6">Contact Us Page</h1>
+        <main className="flex-grow">
+            <h1 className="py-6">Contact Us Page</h1>
+        </main>
         <Footer {...previewData.Footer} />
     </div>)
 }
