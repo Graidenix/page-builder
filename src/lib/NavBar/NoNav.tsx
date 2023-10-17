@@ -5,7 +5,7 @@ export interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = () => {
-    return (<div>NavBar 2</div>)
+    return null
 }
 
 export default NavBar

@@ -1,20 +1,23 @@
-import React, { useState } from "react";
-import { mapStyles } from "@/helper/styles.ts";
+import React, {useMemo, useState} from "react";
+import {cn, mapStyles} from "@/helper/styles.ts";
 import LandingPage from "@/pages/LandingPage";
 import ProductListPage from "@/pages/ProductListPage";
 import ProductDetailsPage from "@/pages/ProductDetailsPage";
 import ContactUsPage from "@/pages/ContactUsPage";
+import {getColorSchema} from "@/helper/colors.ts";
+import {BuilderComponentsProps, ComponentTypeName, ConfigType} from "@/types.ts";
+import {componentsMap} from "@/componentsLib.ts";
 
 export type PreviewProp = {
     className: string;
-    values: any;
+    values: ConfigType;
 }
 
 const pages = ['LandingPage', 'ProductListPage', 'ProductDetailsPage', 'ContactUsPage'] as const;
 
 type SitePage = (typeof pages)[number];
 
-const pageMap: Record<SitePage, React.FC> = {
+const pageMap: Record<SitePage, React.FC<BuilderComponentsProps>> = {
     LandingPage,
     ProductListPage,
     ProductDetailsPage,
@@ -22,10 +25,27 @@ const pageMap: Record<SitePage, React.FC> = {
 };
 
 const Preview: React.FC<PreviewProp> = (props) => {
-    const { className } = props;
+    const {className, values} = props;
     const [page, setPage] = useState<SitePage>('LandingPage')
 
     const Page = pageMap[page]
+
+    const colorVariables = useMemo(() => {
+        const mainSchema = getColorSchema(values.colors.main, 'main');
+        const accentSchema = getColorSchema(values.colors.accent, 'accent');
+        return {...mainSchema, ...accentSchema} as React.CSSProperties;
+    }, [values.colors]);
+
+    const componentsProps = useMemo(() => {
+        const config = Object.keys(values.components) as ComponentTypeName[]
+
+        return config.reduce((acc, componentName) => {
+            const variations = componentsMap[componentName];
+            acc[componentName] = variations[values.components[componentName]]!;
+            return acc;
+        }, {} as BuilderComponentsProps)
+    }, [values.components]);
+
 
     return (<div className={className}>
         <div className={styles.topbar}>
@@ -38,8 +58,8 @@ const Preview: React.FC<PreviewProp> = (props) => {
                 ))}
             </select>
         </div>
-        <div className={styles.main}>
-            <Page />
+        <div className={cn(styles.main)} style={colorVariables}>
+            <Page {...componentsProps}/>
         </div>
     </div>)
 }

@@ -1,0 +1,13 @@
+{
+  "components": {
+    "Footer": [
+      "Footer1",
+      "NoFooter"
+    ],
+    "NavBar": [
+      "NavBar1",
+      "NavBar2",
+      "NoNav"
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 const { deepMerge } = require("./deepMerge");
 
 /**
- * @type {import('../types').ConfigType}
+ * @type {import('../../types').ConfigType}
  */
 const DEFAULT_CONFIG = {
     colors: {
@@ -16,7 +16,7 @@ const DEFAULT_CONFIG = {
 
 /**
  * @param {string} contents
- * @return {import('../types').ConfigType}
+ * @return {import('../../types').ConfigType}
  */
 const parseContents = (contents) => {
     try {

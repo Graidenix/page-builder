@@ -1,12 +1,16 @@
 import React from 'react';
+import {BuilderComponentsProps} from "@/types.ts";
 
-export type LandingPageProps = {
+export type LandingPageProps = BuilderComponentsProps & {};
 
-}
-
-const LandingPage: React.FC<LandingPageProps> = () => {
+const LandingPage: React.FC<LandingPageProps> = (props) => {
+    const {NavBar, Footer} = props;
   return (
-    <div>Landing</div>
+      <div>
+          <NavBar/>
+          <h1 className="py-6">Landing</h1>
+          <Footer/>
+      </div>
   )
 }
 

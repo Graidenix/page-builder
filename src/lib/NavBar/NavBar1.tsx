@@ -4,8 +4,8 @@ export interface NavBarProps {
     links: any[]
 }
 
-const NavBar1: React.FC<NavBarProps> = (props) => {
-    return (<div>NavBar 1</div>)
+const NavBar: React.FC<NavBarProps> = () => {
+    return (<div className="text-main-8">NavBar 1</div>)
 }
 
-export default NavBar1
+export default NavBar
