@@ -3,14 +3,16 @@ const { parseContents } = require('./parseContents');
 const { buildColor } = require('./buildColor');
 const { importComponent } = require('./importComponent');
 const { checkTargetDir } = require('./checkTargetDir');
+const { writeColorCSS } = require('./writeColorCSS');
 
 
 const buildComponents = (file) => {
     try {
         const configContents = readFile(file);
         const configs = parseContents(configContents);
-        const colors = buildColor(configs.colors);
-        checkTargetDir(configs.targetDir)
+        const colorCss = buildColor(configs.colors);
+        checkTargetDir(configs.targetDir);
+        writeColorCSS(colorCss);
         Object.keys(configs.components ?? {}).map(component => {
             importComponent(configs.targetDir, component, configs.components[component])
         })
