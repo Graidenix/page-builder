@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, {Suspense, useMemo, useState} from "react";
 import {cn, mapStyles} from "@/helper/styles.ts";
 import LandingPage from "@/pages/LandingPage";
 import ProductListPage from "@/pages/ProductListPage";
@@ -40,11 +40,14 @@ const Preview: React.FC<PreviewProp> = (props) => {
     const componentsProps = useMemo(() => {
         const config = objKeys(values.components)
 
-        return config.reduce((acc, componentName) => {
+        const result = config.reduce((acc, componentName) => {
             const variations = componentsMap[componentName];
             acc[componentName] = variations[values.components[componentName]]!;
             return acc;
-        }, {} as BuilderComponentsFC)
+        }, {} as BuilderComponentsFC);
+
+        window.selectedComponents = result;
+        return result;
     }, [values.components]);
 
 
@@ -60,7 +63,9 @@ const Preview: React.FC<PreviewProp> = (props) => {
             </select>
         </div>
         <div className={cn(styles.main)} style={colorVariables}>
+            <Suspense fallback="Loading...">
             <Page {...componentsProps}/>
+            </Suspense>
         </div>
     </div>)
 }

@@ -1,9 +1,11 @@
 import React from 'react'
-import { mapStyles } from "@/helper/styles";
-import Preview from "@/components/Preview";
 
+import { mapStyles } from "@/helper/styles";
 import { useFormik } from "formik";
+
+import Preview from "@/components/Preview";
 import Configurator from "@/components/Configurator.tsx";
+
 import {ConfigType} from "@/types.ts";
 
 const INITIAL_CONFIG: ConfigType = {
@@ -14,7 +16,8 @@ const INITIAL_CONFIG: ConfigType = {
     targetDir: './src/shared',
     components: {
         NavBar: 'NoNav',
-        Footer: 'NoFooter'
+        Footer: 'NoFooter',
+        Button: 'Button1'
     }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@graidenix/page-builder",
-  "version": "0.0.1-beta",
+  "version": "0.0.1-beta.2",
   "description": "Builder page",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,13 @@
   "bin": {
     "build": "./bin/build.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/Graidenix/page-builder"
+  },
+  "homepage": "https://page-builder-sage.vercel.app",
+  "keywords": ["taiwindcss", "react", "builder"],
+  "private": false,
   "author": "graidenix",
   "license": "ISC",
   "dependencies": {

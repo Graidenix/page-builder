@@ -5,11 +5,12 @@ import { previewData } from "@/mock/previewData";
 export type ContactUsPageProps = BuilderComponentsFC & {};
 
 const ContactUsPage: React.FC<ContactUsPageProps> = (props) => {
-    const { NavBar, Footer } = props;
+    const { NavBar, Footer, Button } = props;
     return (<div className="flex flex-col h-full">
         <NavBar {...previewData.NavBar} />
-        <main className="flex-grow">
-            <h1 className="py-6">Contact Us Page</h1>
+        <main className="flex-grow flex flex-col justify-center items-center gap-3">
+            <h1 className="py-6 font-bold">Contact Us</h1>
+            <Button>Contact us</Button>
         </main>
         <Footer {...previewData.Footer} />
     </div>)

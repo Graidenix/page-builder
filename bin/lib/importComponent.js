@@ -1,14 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const COMPONENTS_DIR = path.join(__dirname, '../../src/lib');
+const COMPONENTS_DIR = path.join(__dirname, '../../src/lib/components');
 
 /**
  * Copy the selected component of type to the target directory
- * @param {string} targetDir 
- * @param {string} type 
- * @param {string} selected 
- * @throws 
+ * @param {string} targetDir
+ * @param {string} type
+ * @param {string} selected
+ * @throws
  */
 const importComponent = (targetDir, type, selected) => {
     try {

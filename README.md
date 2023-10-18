@@ -1,5 +1,10 @@
 # Page Builder
 
+Clone the project 
+
+```shell
+pnpm install
+```
 
 
 In the target project add import of generated `colors.css` in your `App.tsx` file

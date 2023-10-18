@@ -3,10 +3,10 @@ import type {RxColorName} from "@/helper/colors.ts";
 
 import type { NavBarProps } from "./lib/NavBar/NoNav";
 import type { FooterProps } from "./lib/Footer/NoFooter";
-
-
+import {ButtonProps} from "@/lib/Button/Button1.tsx";
 
 export type BuilderComponentsProps = {
+    Button: ButtonProps
     NavBar: NavBarProps;
     Footer: FooterProps;
 }

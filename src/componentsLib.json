@@ -1,5 +1,10 @@
 {
   "components": {
+    "Button": [
+      "Button1",
+      "Button2",
+      "Button3"
+    ],
     "Footer": [
       "Footer1",
       "Footer2",
@@ -8,6 +13,7 @@
     "NavBar": [
       "NavBar1",
       "NavBar2",
+      "NavBar3",
       "NoNav"
     ]
   }
